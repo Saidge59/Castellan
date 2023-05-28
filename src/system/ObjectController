@@ -1,0 +1,56 @@
+package system
+{
+	
+	/**
+	 * ...
+	 * @author falcon12
+	 */
+	public class ObjectController extends Object
+	{
+		public var object:Array = [];
+		
+		public function ObjectControler()
+		{
+			//...
+		}
+		
+		public function add(obj:IGameObjects):void
+		{
+			object[object.length] = obj;
+		}
+		
+		public function remove(obj:IGameObjects):void
+		{
+			var i:int = objects.length;
+			while(--i>-1)
+			{
+				if (objects[i] == obj)
+				{
+					objects[i] = null;
+					objects.splice(i, 1);
+					break;
+				}
+			}
+		}
+		
+		public function update(delta:Number):void
+		{
+			var i:int = object.length;
+			var obj:IGameObjects;
+			while (--i>-1)
+			{
+				obj = object[i];
+				obj.update(delta);
+			}
+		}
+		
+		public function clear():void
+		{
+			while (--object.length>0)
+			{
+				object[0].free();
+			}
+		}
+	}
+	
+}
